@@ -5,3 +5,7 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+categories = ['chinese', 'italian', 'japanese', 'french', 'belgian']
+10.times do 
+  Restaurant.create(name: Faker::BackToTheFuture.character,address: Faker::BackToTheFuture.quote,category: categories.sample)
+end
