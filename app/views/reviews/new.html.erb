@@ -1,1 +1,15 @@
-<h1>New Review File</h1>
+<div class="container">
+  <h3>Add a New Restaurant for <%= @restaurant.name.capitalize %></h3>
+  <hr>
+  <%= simple_form_for [@restaurant, @review] do |f| %>
+    <div class = "form-group">
+      <%= f.label :content %>
+      <%= f.text_area :content, cols: 80, rows: 5, class: 'form-control' %>
+    </div>
+    <div class="form-group">
+      <%= f.input :rating, collection: [1,2,3,4,5], class: "form-control" %>
+    </div>
+    <%= f.submit class: "btn btn-primary"%>
+  <% end %>
+
+</div>

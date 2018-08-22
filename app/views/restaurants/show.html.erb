@@ -1,1 +1,45 @@
-<h1>Show Restaurants Page</h1>
+<div class="container">
+  <h3>About <%= @restaurant.name.capitalize %></h3>
+  <hr>
+  <ul class="list-unstyled">
+    <li>
+      <p><strong>Address: </strong><%= @restaurant.address %></p> 
+    </li>
+    <li>
+      <p><strong>Phone: </strong><%= @restaurant.phone_number %></p>     
+    </li>
+    <li>
+      <p><strong>Category: </strong><%= @restaurant.category %></p>       
+    </li>
+  </ul>
+  <hr>
+
+  <h4>Add a New Review for <%= @restaurant.name.capitalize %></h4>
+  <hr>
+  <%= simple_form_for [@restaurant, Review.new] do |f| %>
+    <div class = "form-group">
+      <%= f.label :content %>
+      <%= f.text_area :content, cols: 80, rows: 5, class: 'form-control' %>
+    </div>
+    <div class="form-group">
+      <%= f.input :rating, collection: [1,2,3,4,5], class: "form-control" %>
+    </div>
+    <%= f.submit class: "btn btn-primary"%>
+  <% end %>
+
+<hr>
+  <h4>All Reviews 
+
+  </h4>
+  <ol>
+    <% @restaurant.reviews.each do |review| %>
+    <li>
+      <p><%= review.content  %></p>
+      <p><% review.rating.times do %>
+        <i class="fas fa-star"></i>
+        <% end %>
+      </p>
+    </li>
+    <% end %>
+  </ol>  
+</div>
